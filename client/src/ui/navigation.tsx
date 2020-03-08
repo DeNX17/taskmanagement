@@ -2,13 +2,26 @@ import React, { ReactElement } from 'react'
 import {
   Link
 } from "react-router-dom";
-import { root } from '../common/routes';
+import { root, auth } from '../common/routes';
 
+const items = [
+  {
+    name: "Main",
+    path: root
+  },
+  {
+    name: "Auth",
+    path: auth,
+  }
+]
 
 export const Navigation = (): ReactElement => (
-  <div>
-    <ul>
-      <Link to={root}>Main</Link>
-    </ul>
-  </div>
+  <ul>
+    {items.map((item): ReactElement =>
+      <li>
+        <Link to={item.path}>
+          {item.name}
+        </Link>
+      </li>)}
+  </ul>
 )
