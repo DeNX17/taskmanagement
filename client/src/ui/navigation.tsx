@@ -3,6 +3,28 @@ import {
   Link
 } from "react-router-dom";
 import { root, auth } from '../common/routes';
+import styled from 'styled-components';
+
+const StyledUl = styled("ul")`
+  display: flex;
+  align-items: center;
+  background-color: #c1bcff;
+`
+const StyledLi = styled("li")`
+  color: black;
+  transform: none;
+  text-decoration: none;
+  padding: 12px 20px;
+  list-style-type: none;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  &:hover {
+    opacity: 0.6;
+  }
+`
 
 const items = [
   {
@@ -16,12 +38,13 @@ const items = [
 ]
 
 export const Navigation = (): ReactElement => (
-  <ul>
+  <StyledUl>
     {items.map((item): ReactElement =>
-      <li>
-        <Link to={item.path}>
+      <StyledLi key={item.name}>
+        <StyledLink to={item.path}>
           {item.name}
-        </Link>
-      </li>)}
-  </ul>
+        </StyledLink>
+      </StyledLi>
+    )}
+  </StyledUl>
 )
