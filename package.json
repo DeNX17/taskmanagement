@@ -1,0 +1,19 @@
+{
+  "name": "taskmanagement",
+  "version": "1.0.0",
+  "description": "",
+  "main": "n",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeNX17/taskmanagement.git"
+  },
+  "author": "DeNX17",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeNX17/taskmanagement/issues"
+  },
+  "homepage": "https://github.com/DeNX17/taskmanagement#readme"
+}
