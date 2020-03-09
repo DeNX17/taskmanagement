@@ -3,22 +3,25 @@ import { Formik } from 'formik'
 import { CreateTaskForm } from './ui/create-task.form'
 import authFetch from '../common/auth-fetch'
 
+import { withRouter } from "react-router";
+import { tasks } from '../common/routes';
+
 const initialValues = {
   title: "",
   description: ""
 }
 
-export const CreateTaskPage = (): ReactElement => {
-  const handleSubmit = (values: any): void => {
-    const data = authFetch("http://localhost:5000/tasks", {
+export const CreateTaskPage = withRouter(({ history }): ReactElement => {
+  const handleSubmit = async (values: any): Promise<void> => {
+    console.log("submit")
+
+    await authFetch("http://localhost:5000/tasks", {
       method: "POST",
       body: JSON.stringify(values)
-    })
-
-    console.log(data)
+    }).then(() => history.push(tasks)).catch((err) => console.log(err))
   }
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} component={CreateTaskForm} />
   )
-}
+})
