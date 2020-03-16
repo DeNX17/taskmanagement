@@ -52,4 +52,9 @@ export class TasksController {
 	rateTask(@Body() rateTask: RateTaskDto): Promise<Task> {
 		return this.tasksService.rateTask(rateTask)
 	}
+
+	// @Get("test")
+	// statusTransferToProgress(): Promise<void> {
+	// 	return this.tasksService.statusTransferToProgress()
+	// }
 }

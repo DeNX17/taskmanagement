@@ -16,4 +16,5 @@ export declare class TasksService {
     deleteTask(id: number): Promise<boolean>;
     updateStatus(id: number, status: TaskStatus): Promise<Task>;
     rateTask(rateTask: RateTaskDto): Promise<Task>;
+    statusTransferToProgress(): Promise<void>;
 }

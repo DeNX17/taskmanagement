@@ -42,7 +42,6 @@ export class TaskRepository extends Repository<Task> {
     }
 
     const tasks = await query.getMany()
-
     return tasks
   }
 
@@ -84,5 +83,13 @@ export class TaskRepository extends Repository<Task> {
 
     await task.save()
     return task
+  }
+
+  async statusTransferToProgress(): Promise<void> {
+    const query = this.createQueryBuilder("task").update(Task).set({
+      status: TaskStatus.IN_PROGRESS
+    }).where("status = :status", { status: TaskStatus.OPEN })
+
+    query.execute()
   }
 }

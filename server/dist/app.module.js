@@ -13,6 +13,7 @@ const typeorm_config_1 = require("./config/typeorm.config");
 const auth_module_1 = require("./auth/auth.module");
 const labels_module_1 = require("./labels/labels.module");
 const comment_module_1 = require("./comment/comment.module");
+const schedule_1 = require("@nestjs/schedule");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -23,6 +24,7 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             labels_module_1.LabelsModule,
             comment_module_1.CommentModule,
+            schedule_1.ScheduleModule.forRoot(),
         ],
     })
 ], AppModule);

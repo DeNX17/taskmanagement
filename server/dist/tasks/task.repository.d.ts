@@ -13,4 +13,5 @@ export declare class TaskRepository extends Repository<Task> {
     rateTask(rateTask: RateTaskDto): Promise<Task>;
     deleteTask(id: number): Promise<boolean>;
     updateStatus(id: number, status: TaskStatus): Promise<Task>;
+    statusTransferToProgress(): Promise<void>;
 }

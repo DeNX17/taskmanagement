@@ -86,6 +86,14 @@ let TaskRepository = class TaskRepository extends typeorm_1.Repository {
             return task;
         });
     }
+    statusTransferToProgress() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = this.createQueryBuilder("task").update(task_entity_1.Task).set({
+                status: task_status_enum_1.TaskStatus.IN_PROGRESS
+            }).where("status = :status", { status: task_status_enum_1.TaskStatus.OPEN });
+            query.execute();
+        });
+    }
 };
 TaskRepository = __decorate([
     typeorm_1.EntityRepository(task_entity_1.Task)

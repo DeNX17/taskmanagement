@@ -20,6 +20,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const task_repository_1 = require("./task.repository");
 const labels_repository_1 = require("../labels/labels.repository");
+const schedule_1 = require("@nestjs/schedule");
 let TasksService = class TasksService {
     constructor(taskRepository, labelRepository) {
         this.taskRepository = taskRepository;
@@ -56,7 +57,18 @@ let TasksService = class TasksService {
             return this.taskRepository.rateTask(rateTask);
         });
     }
+    statusTransferToProgress() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.taskRepository.statusTransferToProgress();
+        });
+    }
 };
+__decorate([
+    schedule_1.Cron("10 * * * * *"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], TasksService.prototype, "statusTransferToProgress", null);
 TasksService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [task_repository_1.TaskRepository,
