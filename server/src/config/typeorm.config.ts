@@ -2,14 +2,14 @@ import { TypeOrmModuleOptions } from "@nestjs/typeorm"
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: "postgres",
-  host: process.env.DB_HOST || "localhost",
+  host: "172-31-39-130",
   username: "postgres",
   password: "214470",
   port: 5432,
   database: "taskmanagement",
   entities: [__dirname + "/../**/*.entity.{js,ts}"],
-  synchronize: false,
-  logging: true,
+  synchronize: true,
+  logging: false,
   migrations: ["src/migrations/*.{js.ts}"],
   cli: {
     migrationsDir: "src/migrations"
