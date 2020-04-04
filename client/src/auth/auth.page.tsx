@@ -44,10 +44,11 @@ export const AuthPage = (): ReactElement => {
   return (
     <Fragment>
       <button onClick={(): void => setIsSignup(!isSignup)}>switch to {isSignup ? "sign in" : "sign up"}</button>
+      <br />
 
       {isSignup ?
-        <Formik initialValues={initialValues} onSubmit={handleSignup} component={SignupForm} /> :
-        <Formik initialValues={initialValues} onSubmit={handleSignin} component={SignupForm} />}
+        <Formik initialValues={initialValues} onSubmit={handleSignup} component={(): ReactElement => <SignupForm buttonText="Sing up" />} /> :
+        <Formik initialValues={initialValues} onSubmit={handleSignin} component={(): ReactElement => <SignupForm buttonText="Sing in" />} />}
     </Fragment>
   )
 }

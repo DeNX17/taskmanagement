@@ -2,10 +2,10 @@ import React, { ReactElement } from 'react'
 import { Form, Field } from 'formik'
 
 interface Props {
-
+  buttonText: string
 }
 
-export const SignupForm = ({ }: Props): ReactElement => (
+export const SignupForm = ({ buttonText }: Props): ReactElement => (
   <Form>
     <label>userName</label>
     <Field name="username" />
@@ -17,6 +17,6 @@ export const SignupForm = ({ }: Props): ReactElement => (
 
     <br />
 
-    <button>sign up</button>
+    <button type="submit" >{buttonText}</button>
   </Form>
 )
