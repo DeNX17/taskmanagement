@@ -1,4 +1,4 @@
-import { Controller, Post, Body, ValidationPipe, Req, Get, Res, Query } from '@nestjs/common';
+import { Controller, Post, Body, ValidationPipe, Req, Get, Res, Query, UseGuards } from '@nestjs/common';
 import { AuthCredentialsDto } from './dto/auth.credentials.dto';
 import { AuthService } from './auth.service';
 import { ResultSignup } from './dto/result-signup';
@@ -6,6 +6,10 @@ import { ResultSignIn } from './dto/result-signin';
 import fetch from "node-fetch"
 import { root } from 'src/common/variables';
 import { CLIENT_ID, CLIENT_SECRET } from 'src/common/constants';
+import { CurrentUser } from './user-decorator';
+import { User } from './user.entity';
+import { AuthGuard } from '@nestjs/passport';
+import { AuthGuardJWT } from 'src/constants/constants';
 
 @Controller('api/auth')
 export class AuthController {
@@ -13,9 +17,14 @@ export class AuthController {
     private authService: AuthService,
   ) { }
 
+  @Post('/me')
+  @UseGuards(AuthGuard(AuthGuardJWT))
+  getMe(@CurrentUser() user: User): User {
+    return user
+  }
+
   @Post('/signup')
   signUp(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<ResultSignup> {
-    console.log(authCredentialsDto)
     return this.authService.signUp(authCredentialsDto)
   }
 
