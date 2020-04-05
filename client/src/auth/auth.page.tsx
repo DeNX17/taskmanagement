@@ -3,7 +3,8 @@ import { Formik } from "formik"
 import { SignupForm } from './signup.form'
 import authFetch from "../common/auth-fetch"
 import Cookies from 'js-cookie'
-import { generateRoute } from '../common/routes'
+import { generateRoute, tasks } from '../common/routes'
+import { useHistory } from 'react-router'
 
 interface Sign {
   username: string
@@ -16,6 +17,8 @@ const initialValues = {
 }
 
 export const AuthPage = (): ReactElement => {
+  const history = useHistory()
+
   const [isSignup, setIsSignup] = useState(true)
 
   const handleSignup = async (values: Sign): Promise<void> => {
@@ -34,12 +37,19 @@ export const AuthPage = (): ReactElement => {
 
 
   const handleSignin = async (values: Sign): Promise<void> => {
-    const response = await authFetch(generateRoute("api/auth/signin"), {
+    const response = await (await fetch(generateRoute("api/auth/signin"), {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(values),
-    })
+    })).json()
 
-    Cookies.set("token", response.accessToken)
+    if (response.accessToken) {
+      Cookies.set("token", response.accessToken)
+      alert("Success")
+      history.push(tasks)
+    }
   }
 
   return (
