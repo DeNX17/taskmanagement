@@ -11,7 +11,7 @@ import { User } from '../auth/user.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthGuardJWT } from '../constants/constants';
 
-@Controller('tasks')
+@Controller('api/tasks')
 export class TasksController {
 	constructor(private tasksService: TasksService) { }
 
