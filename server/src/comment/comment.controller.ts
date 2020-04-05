@@ -7,7 +7,7 @@ import { AuthGuardJWT } from '../constants/constants';
 import { CurrentUser } from '../auth/user-decorator';
 import { User } from '../auth/user.entity';
 
-@Controller('comment')
+@Controller('api/comment')
 export class CommentController {
   constructor(private commentService: CommentService) { }
 

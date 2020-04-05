@@ -7,7 +7,7 @@ import fetch from "node-fetch"
 import { root } from 'src/common/variables';
 import { CLIENT_ID, CLIENT_SECRET } from 'src/common/constants';
 
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   constructor(
     private authService: AuthService,
