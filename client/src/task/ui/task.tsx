@@ -44,6 +44,7 @@ const Labels = styled("div")`
 
 const Label = styled("p")`
   padding: 5px 10px;
+  border: 1px solid black;
 `
 
 export const Task = ({ title, description, created_at, comments, author, labels }: Props): ReactElement => (
@@ -58,6 +59,6 @@ export const Task = ({ title, description, created_at, comments, author, labels 
 
     <p>Author - {author.username}</p>
 
-    <Labels>{labels.map(({ name, id }: any) => <Label key={id}>{name}</Label>)}</Labels>
+    Labels:<Labels>{labels.map(({ name, id }: any) => <Label key={id}>{name}</Label>)}</Labels>
   </Root>
 )

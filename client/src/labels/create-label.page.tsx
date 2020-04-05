@@ -1,13 +1,16 @@
 import React, { ReactElement } from 'react'
 import { Formik, Form } from 'formik'
 import { LabelInput } from '../ui/label-input'
-import { generateRoute } from '../common/routes'
+import { generateRoute, labels } from '../common/routes'
+import { useHistory } from 'react-router'
 
 const initialValues = {
   name: ""
 }
 
 export const CreateLabelPage = (): ReactElement => {
+  const history = useHistory()
+
   const handleSubmit = (values: any): void => {
     try {
       fetch(generateRoute("api/labels"), {
@@ -17,7 +20,8 @@ export const CreateLabelPage = (): ReactElement => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values)
-      })
+      }).then(() => history.push(labels))
+
     } catch { }
   }
 
