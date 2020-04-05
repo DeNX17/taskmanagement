@@ -4,7 +4,7 @@ import { CreateTaskForm } from './ui/create-task.form'
 import authFetch from '../common/auth-fetch'
 
 import { withRouter } from "react-router";
-import { tasks } from '../common/routes';
+import { tasks, generateRoute } from '../common/routes';
 
 const initialValues = {
   title: "",
@@ -15,7 +15,7 @@ export const CreateTaskPage = withRouter(({ history }): ReactElement => {
   const handleSubmit = async (values: any): Promise<void> => {
     console.log("submit")
 
-    await authFetch("/api/tasks", {
+    await authFetch(generateRoute("api/tasks"), {
       method: "POST",
       body: JSON.stringify(values)
     }).then(() => history.push(tasks)).catch((err) => console.log(err))

@@ -1,12 +1,13 @@
 import React, { ReactElement, useState, useEffect } from 'react'
 import { Task } from "./ui/task"
 import { Link } from 'react-router-dom'
+import { generateRoute } from '../common/routes'
 
 export const TasksPage = (): ReactElement => {
   const [taskList, setTaskList] = useState([])
 
-  useEffect((): any => {
-    fetch("/api/tasks").then((res) => res.json()).then((res) => setTaskList(res))
+  useEffect((): void => {
+    fetch(generateRoute("api/tasks")).then((res) => res.json()).then((res) => setTaskList(res))
   }, [])
 
   return (

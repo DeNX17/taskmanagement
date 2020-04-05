@@ -3,6 +3,7 @@ import { Formik } from "formik"
 import { SignupForm } from './signup.form'
 import authFetch from "../common/auth-fetch"
 import Cookies from 'js-cookie'
+import { generateRoute } from '../common/routes'
 
 interface Sign {
   username: string
@@ -18,7 +19,7 @@ export const AuthPage = (): ReactElement => {
   const [isSignup, setIsSignup] = useState(true)
 
   const handleSignup = async (values: Sign): Promise<void> => {
-    const data = await authFetch("/api/auth/signup", {
+    const data = await authFetch(generateRoute("api/auth/signup"), {
       method: "POST",
       body: JSON.stringify(values)
     })
@@ -33,14 +34,14 @@ export const AuthPage = (): ReactElement => {
 
 
   const handleSignin = async (values: Sign): Promise<void> => {
-    const data = await authFetch("/api/auth/signin", {
+    const response = await authFetch(generateRoute("api/auth/signin"), {
       method: "POST",
       body: JSON.stringify(values),
-    }).then((res): void => {
-      Cookies.set("token", res.accessToken)
     })
 
+    Cookies.set("token", response.accessToken)
   }
+
   return (
     <Fragment>
       <button onClick={(): void => setIsSignup(!isSignup)}>switch to {isSignup ? "sign in" : "sign up"}</button>
