@@ -21,7 +21,6 @@ export class LabelsRepository extends Repository<Label> {
 
   async createLabel(createLabelDto: CreateLabelDto) {
     const { name } = createLabelDto
-
     const label = this.create()
 
     label.name = name

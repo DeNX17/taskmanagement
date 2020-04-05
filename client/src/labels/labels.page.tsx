@@ -9,8 +9,6 @@ export const LabelsPage = (): ReactElement => {
     fetch(generateRoute("api/labels")).then((res) => res.json()).then((res) => setLabels(res))
   }, [])
 
-  console.log(labels)
-
   return (
     <div>
       <Link to={createLabel}><button>Create label</button></Link>
