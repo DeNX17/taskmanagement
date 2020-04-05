@@ -15,7 +15,7 @@ export const CreateTaskPage = withRouter(({ history }): ReactElement => {
   const handleSubmit = async (values: any): Promise<void> => {
     console.log("submit")
 
-    await authFetch("http://localhost:5000/tasks", {
+    await authFetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify(values)
     }).then(() => history.push(tasks)).catch((err) => console.log(err))

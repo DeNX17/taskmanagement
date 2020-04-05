@@ -6,7 +6,7 @@ export const TasksPage = (): ReactElement => {
   const [taskList, setTaskList] = useState([])
 
   useEffect((): any => {
-    fetch("http://localhost:5000/tasks").then((res) => res.json()).then((res) => setTaskList(res))
+    fetch("/api/tasks").then((res) => res.json()).then((res) => setTaskList(res))
   }, [])
 
   return (

@@ -18,7 +18,7 @@ export const AuthPage = (): ReactElement => {
   const [isSignup, setIsSignup] = useState(true)
 
   const handleSignup = async (values: Sign): Promise<void> => {
-    const data = await authFetch("http://localhost:5000/auth/signup", {
+    const data = await authFetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify(values)
     })
@@ -33,7 +33,7 @@ export const AuthPage = (): ReactElement => {
 
 
   const handleSignin = async (values: Sign): Promise<void> => {
-    const data = await authFetch("http://localhost:5000/auth/signin", {
+    const data = await authFetch("/api/auth/signin", {
       method: "POST",
       body: JSON.stringify(values),
     }).then((res): void => {
