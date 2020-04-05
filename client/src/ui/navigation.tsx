@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import {
   Link
 } from "react-router-dom";
-import { root, auth, tasks } from '../common/routes';
+import { root, auth, tasks, labels } from '../common/routes';
 import styled from 'styled-components';
 
 const StyledUl = styled("ul")`
@@ -38,6 +38,10 @@ const items = [
   {
     name: "Tasks",
     path: tasks
+  },
+  {
+    name: "Labels",
+    path: labels
   }
 ]
 
