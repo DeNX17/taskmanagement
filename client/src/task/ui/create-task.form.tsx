@@ -1,7 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react'
 import { LabelInput } from '../../ui/label-input'
 import { Form, FormikProps } from 'formik'
-import { awaitFetch } from '../../common/await-fetch'
 import styled from 'styled-components'
 import { LabelButton } from './label-button'
 
@@ -17,7 +16,7 @@ export const CreateTaskForm = ({ values, setFieldValue }: Props): ReactElement =
   const [labels, setLabels] = useState([])
 
   useEffect((): void => {
-    awaitFetch("api/labels").then((res) => setLabels(res))
+    fetch("api/labels").then((res) => res.json()).then((res) => setLabels(res))
   }, [])
 
   return (
