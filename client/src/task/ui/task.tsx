@@ -59,6 +59,6 @@ export const Task = ({ title, description, created_at, comments, author, labels 
 
     <p>Author - {author.username}</p>
 
-    Labels:<Labels>{labels.map(({ name, id }: any) => <Label key={id}>{name}</Label>)}</Labels>
-  </Root>
+    {labels.length > 0 && <div>Labels: <Labels> {labels.map(({ name, id }: any) => <Label key={id}>{name}</Label>)}</Labels></div>}
+  </Root >
 )

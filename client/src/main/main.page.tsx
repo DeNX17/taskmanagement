@@ -6,6 +6,6 @@ interface Props {
 
 export const MainPage = ({ }: Props): ReactElement => (
   <div>
-    something
+    It's a web app for CRUD tasks with labels and auth
   </div>
 )
