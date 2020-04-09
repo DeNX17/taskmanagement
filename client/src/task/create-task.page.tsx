@@ -6,10 +6,10 @@ import authFetch from '../common/auth-fetch'
 import { withRouter } from "react-router";
 import { tasks, generateRoute } from '../common/routes';
 
-interface CreateTaskInput {
+export interface CreateTaskInput {
   title: string
   description: string
-  labelsIds: string[]
+  labelIds: string[]
 }
 
 const initialValues = {
@@ -19,7 +19,7 @@ const initialValues = {
 }
 
 export const CreateTaskPage = withRouter(({ history }): ReactElement => {
-  const handleSubmit = async (values: any): Promise<void> => {
+  const handleSubmit = async (values: CreateTaskInput): Promise<void> => {
     await authFetch(generateRoute("api/tasks"), {
       method: "POST",
       body: JSON.stringify(values)

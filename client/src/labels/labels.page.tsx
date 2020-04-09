@@ -13,7 +13,12 @@ export const LabelsPage = (): ReactElement => {
   const [labels, setLabels] = useState([])
 
   useEffect((): void => {
-    fetch(generateRoute("api/labels")).then((res) => res.json()).then((res) => setLabels(res))
+    fetch(generateRoute("api/labels"), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then((res) => res.json()).then((res) => setLabels(res))
   }, [])
 
   return (

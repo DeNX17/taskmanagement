@@ -3,8 +3,9 @@ import { LabelInput } from '../../ui/label-input'
 import { Form, FormikProps } from 'formik'
 import styled from 'styled-components'
 import { LabelButton } from './label-button'
+import { CreateTaskInput } from '../create-task.page'
 
-type Props = FormikProps<any> & {
+type Props = FormikProps<CreateTaskInput> & {
 
 }
 
@@ -16,7 +17,12 @@ export const CreateTaskForm = ({ values, setFieldValue }: Props): ReactElement =
   const [labels, setLabels] = useState([])
 
   useEffect((): void => {
-    fetch("api/labels").then((res) => res.json()).then((res) => setLabels(res))
+    fetch("api/labels", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then((res) => res.json()).then((res) => setLabels(res))
   }, [])
 
   return (
