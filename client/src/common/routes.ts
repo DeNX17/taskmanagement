@@ -7,7 +7,7 @@ export const createLabel = `${labels}/create`
 
 export function generateRoute(path: string) {
   if (process.env.NODE_ENV) {
-    return `${path}`
+    return `/${path}`
   }
   return path
 } 

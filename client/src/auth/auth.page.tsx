@@ -5,6 +5,7 @@ import authFetch from "../common/auth-fetch"
 import Cookies from 'js-cookie'
 import { generateRoute, tasks } from '../common/routes'
 import { useHistory } from 'react-router'
+import styled from 'styled-components'
 
 interface Sign {
   username: string
@@ -16,6 +17,9 @@ const initialValues = {
   password: ""
 }
 
+const ToggleButton = styled("button")`
+  margin-bottom: 30px;
+`
 export const AuthPage = (): ReactElement => {
   const history = useHistory()
 
@@ -54,7 +58,7 @@ export const AuthPage = (): ReactElement => {
 
   return (
     <Fragment>
-      <button onClick={(): void => setIsSignup(!isSignup)}>switch to {isSignup ? "sign in" : "sign up"}</button>
+      <ToggleButton onClick={(): void => setIsSignup(!isSignup)}>switch to {isSignup ? "sign in" : "sign up"}</ToggleButton>
       <br />
 
       {isSignup ?

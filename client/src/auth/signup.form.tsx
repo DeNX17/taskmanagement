@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { Form, Field } from 'formik'
+import { LabelInput } from '../ui/label-input'
 
 interface Props {
   buttonText: string
@@ -7,15 +8,9 @@ interface Props {
 
 export const SignupForm = ({ buttonText }: Props): ReactElement => (
   <Form>
-    <label>userName</label>
-    <Field name="username" />
+    <LabelInput name="username" label="user name" />
 
-    <br />
-
-    <label>password</label>
-    <Field name="password" />
-
-    <br />
+    <LabelInput name="password" label="password" />
 
     <button type="submit" >{buttonText}</button>
   </Form>

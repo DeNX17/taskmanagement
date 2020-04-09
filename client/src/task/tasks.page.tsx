@@ -5,9 +5,14 @@ import { generateRoute } from '../common/routes'
 
 export const TasksPage = (): ReactElement => {
   const [taskList, setTaskList] = useState([])
-
+  console.log(taskList)
   useEffect((): void => {
-    fetch(generateRoute("api/tasks")).then((res) => res.json()).then((res) => setTaskList(res))
+    fetch(generateRoute("api/tasks"), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then((res) => res.json()).then((res) => setTaskList(res))
   }, [])
 
   return (
