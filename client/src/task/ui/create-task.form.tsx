@@ -4,6 +4,7 @@ import { Form, FormikProps } from 'formik'
 import styled from 'styled-components'
 import { LabelButton } from './label-button'
 import { CreateTaskInput } from '../create-task.page'
+import { generateRoute } from '../../common/routes'
 
 type Props = FormikProps<CreateTaskInput> & {
 
@@ -17,7 +18,7 @@ export const CreateTaskForm = ({ values, setFieldValue }: Props): ReactElement =
   const [labels, setLabels] = useState([])
 
   useEffect((): void => {
-    fetch("api/labels", {
+    fetch(generateRoute("api/labels"), {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
