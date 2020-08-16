@@ -6,7 +6,6 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
 import { ResultSignup } from './dto/result-signup';
 import { ResultSignIn } from './dto/result-signin';
-import fetch from "node-fetch"
 
 @Injectable()
 export class AuthService {
@@ -34,23 +33,23 @@ export class AuthService {
     return { accessToken }
   }
 
-  async getFiendsNames(token: string): Promise<string[]> {
-    const data = await (await fetch(`https://api.vk.com/method/friends.get?access_token=${token}&v=5.103`)).json()
+  // async getFiendsNames(token: string): Promise<string[]> {
+  //   const data = await (await fetch(`https://api.vk.com/method/friends.get?access_token=${token}&v=5.103`)).json()
 
-    const user_ids = data.response.items.join(',')
+  //   const user_ids = data.response.items.join(',')
 
-    const friendUsers = await (await fetch(`https://api.vk.com/method/users.get?user_ids=${user_ids}&access_token=${token}&v=5.103`)).json()
+  //   const friendUsers = await (await fetch(`https://api.vk.com/method/users.get?user_ids=${user_ids}&access_token=${token}&v=5.103`)).json()
 
-    const friendNames = friendUsers.response.map((friend: any): any => `${friend.first_name} ${friend.last_name}`)
+  //   const friendNames = friendUsers.response.map((friend: any): any => `${friend.first_name} ${friend.last_name}`)
 
-    return friendNames
-  }
+  //   return friendNames
+  // }
 
-  async createUserVK(token: any): Promise<boolean> {
-    const { access_token, user_id } = token
+  // async createUserVK(token: any): Promise<boolean> {
+  //   const { access_token, user_id } = token
 
-    const meInfo = await (await fetch(`https://api.vk.com/method/users.get?user_ids=${user_id}&access_token=${access_token}&v=5.103`)).json()
+  //   const meInfo = await (await fetch(`https://api.vk.com/method/users.get?user_ids=${user_id}&access_token=${access_token}&v=5.103`)).json()
 
-    return await this.userRepository.createUserVK(meInfo, access_token)
-  }
+  //   return await this.userRepository.createUserVK(meInfo, access_token)
+  // }
 }
