@@ -1,6 +1,0 @@
-[submodule "client"]
-	path = client
-	url = https://github.com/DeNX17/client.git
-[submodule "server"]
-	path = server
-	url = https://github.com/DeNX17/server.git
