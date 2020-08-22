@@ -7,7 +7,6 @@ import { FilterTaskDto } from './dto/filter-task.dto';
 import { RateTaskDto } from './dto/rate-task.dto';
 import { LabelsRepository } from '../labels/labels.repository';
 import { User } from '../auth/user.entity';
-import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class TasksService {
@@ -44,10 +43,5 @@ export class TasksService {
 
   async rateTask(rateTask: RateTaskDto): Promise<Task> {
     return this.taskRepository.rateTask(rateTask)
-  }
-
-  @Cron("10 * * * * *")
-  async statusTransferToProgress(): Promise<void> {
-    return this.taskRepository.statusTransferToProgress()
   }
 }

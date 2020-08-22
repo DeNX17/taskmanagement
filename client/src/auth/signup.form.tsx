@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Form, Field } from 'formik'
+import { Form } from 'formik'
 import { LabelInput } from '../ui/label-input'
 
 interface Props {

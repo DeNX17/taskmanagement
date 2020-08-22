@@ -5,7 +5,6 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { AuthModule } from './auth/auth.module';
 import { LabelsModule } from './labels/labels.module';
 import { CommentModule } from './comment/comment.module';
-import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -14,7 +13,6 @@ import { ScheduleModule } from '@nestjs/schedule';
     AuthModule,
     LabelsModule,
     CommentModule,
-    ScheduleModule.forRoot(),
   ],
 })
 export class AppModule { }

@@ -1,14 +1,12 @@
-import { Controller, Post, Body, ValidationPipe, Req, Get, Res, Query, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, ValidationPipe, UseGuards } from '@nestjs/common';
 import { AuthCredentialsDto } from './dto/auth.credentials.dto';
 import { AuthService } from './auth.service';
 import { ResultSignup } from './dto/result-signup';
 import { ResultSignIn } from './dto/result-signin';
-import { root } from 'src/common/variables';
-import { CLIENT_ID, CLIENT_SECRET } from 'src/common/constants';
 import { CurrentUser } from './user-decorator';
 import { User } from './user.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthGuardJWT } from 'src/constants/constants';
+import { AuthGuardJWT } from '../constants/constants';
 
 @Controller('api/auth')
 export class AuthController {

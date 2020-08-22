@@ -14,17 +14,4 @@ async function bootstrap() {
 }
 
 
-if (cluster.isMaster) {
-  for (let i = 0; i < cpus().length - 1; i++) {
-    cluster.fork()
-
-    cluster.on("exit", () => {
-      cluster.fork()
-    })
-  }
-}
-
-if (cluster.isWorker) {
-  bootstrap();
-}
-
+bootstrap()
